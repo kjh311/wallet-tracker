@@ -1,0 +1,16 @@
+import type { FromSchema } from 'json-schema-to-ts';
+import * as schemas from './schemas';
+export type CheckSanctionedAddressMetadataParam = FromSchema<typeof schemas.CheckSanctionedAddress.metadata>;
+export type CheckSanctionedAddressResponse200 = FromSchema<typeof schemas.CheckSanctionedAddress.response['200']>;
+export type CheckSanctionedAddressResponse404 = FromSchema<typeof schemas.CheckSanctionedAddress.response['404']>;
+export type CreateReportsBodyParam = FromSchema<typeof schemas.CreateReports.body>;
+export type CreateReportsResponse201 = FromSchema<typeof schemas.CreateReports.response['201']>;
+export type CreateReportsResponse403 = FromSchema<typeof schemas.CreateReports.response['403']>;
+export type CreateReportsResponse422 = FromSchema<typeof schemas.CreateReports.response['422']>;
+export type ReportMetadataParam = FromSchema<typeof schemas.Report.metadata>;
+export type ReportResponse200 = FromSchema<typeof schemas.Report.response['200']>;
+export type ReportResponse404 = FromSchema<typeof schemas.Report.response['404']>;
+export type ReportsMetadataParam = FromSchema<typeof schemas.Reports.metadata>;
+export type ReportsResponse200 = FromSchema<typeof schemas.Reports.response['200']>;
+export type ReportsResponse400 = FromSchema<typeof schemas.Reports.response['400']>;
+export type ReportsResponse403 = FromSchema<typeof schemas.Reports.response['403']>;

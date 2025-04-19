@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Wallet = require("./models/Wallet");
+const fetch = require("node-fetch");
 
 dotenv.config();
 
@@ -67,6 +68,39 @@ app.delete("/api/wallets/:id", async (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("API is running");
+});
+
+// GET: Check wallet for scams using Chainabuse API
+app.get("/api/check-wallet/:address", async (req, res) => {
+  const { address } = req.params;
+
+  try {
+    const response = await fetch(
+      `https://api.chainabuse.com/api/v1/reports?address=${address}`,
+      {
+        headers: {
+          "X-API-KEY": process.env.CHAINABUSE_API_KEY,
+          accept: "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Chainabuse error:", errorText);
+      return res
+        .status(500)
+        .json({ error: "Failed to fetch data from Chainabuse" });
+    }
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error("Error checking wallet:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while checking the wallet" });
+  }
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

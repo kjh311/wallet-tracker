@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Wallet = require("./src/models/Wallet");
+// const checkWalletRoutes = require("./checkWalletRoutes"); // adjust path
+// app.use(checkWalletRoutes);
 
 dotenv.config();
 

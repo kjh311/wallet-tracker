@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "chainabuse",
+      "source": "@chainabuse/v1.2#5rm4ydugm6q2il17",
+      "integrity": "sha512-WpxVaQZms84g0y2IFRlBXqD0P6rO9WHe4Rddn9u2b1Py+y+W2fKMupjwbyPsrmzSVsAsgXpjJoiDHSDvhIchyQ==",
+      "installerVersion": "6.1.3"
+    }
+  ]
+}
